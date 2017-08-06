@@ -22,7 +22,7 @@ V value;
 Entry<K,V> left = null;
 Entry<K,V> right = null;
 Entry<K,V> parent;
-boolean color = BLACK;
+boolean color = BLACK;  //从此处可以得知TreeMap是个红黑树
 ***省略***
 ```
 ###### HashMap：
