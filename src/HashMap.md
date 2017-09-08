@@ -54,7 +54,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
 
 ##### 二、创建HashMap
 创建HashMap实例有四个构造方法，这里着重介绍一个，看源码：  
-```
+```java
 public HashMap(int initialCapacity, float loadFactor) {
     if (initialCapacity < 0)
         throw new IllegalArgumentException("Illegal initial capacity: " +
@@ -99,7 +99,7 @@ n>>>1表示无符号右移1位，那么二进制表示为00000011，此时000001
 
 ##### 三、put添加元素
 添加一个元素是所有容器中的标配功能，但是至于添加方式那就各有千秋，Map添加元素的方式是通过put，向容器中存入一个Key-Value对。下面我将详细介绍put的实现过程，这个方法非常重要，吃透了这个方法的实现原理，基本也就能搞懂HashMap是怎么一回事了。  
-```
+```java
 public V put(K key, V value) {
     return putVal(hash(key), key, value, false, true);
 }
@@ -169,7 +169,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 
 ##### 四、get获取元素
 使用HashMap有一个明显的优点，就是他的存取时间开销基本维持在O(1)，除非在数据量大了以后hash冲突的元素多了以后，对其性能有一定的影响。那么现在介绍的get方法很好的体现了这个优势。  
-```
+```java
 public V get(Object key) {
     Node<K,V> e;
     return (e = getNode(hash(key), key)) == null ? null : e.value;
@@ -202,7 +202,7 @@ final Node<K,V> getNode(int hash, Object key) {
 
 ##### 五、remove删除元素
 删除元素的实现原理和put，get都类似。remove通过给定的key值，找到在hash表中对应的位置，然后找出相同key值的元素，对其删除。  
-```
+```java
 public V remove(Object key) {
     Node<K,V> e;
     return (e = removeNode(hash(key), key, null, false, true)) == null ?
