@@ -259,7 +259,7 @@ final Node<K,V> removeNode(int hash, Object key, Object value,
 
 ##### 六、resize动态扩容
 resize这个方法非常重要，他在添加元素的时候就会被调用到。resize的目的是在容器的容量达到上限的时候，对其扩容，使得元素可以继续被添加进来。这里需要关注两个参数threshold和loadFactor，threshold表示容量的上限，当容器中元素数量大于threshold的时候，就要扩容，并且每次扩容都是原来的两倍。loadFactor表示hash表的数组大小。这两个参数的配合使用可以有效的控制hash冲突数量。  
-```
+```java
 final Node<K,V>[] resize() {
     Node<K,V>[] oldTab = table;
     int oldCap = (oldTab == null) ? 0 : oldTab.length;
@@ -360,7 +360,7 @@ final Node<K,V>[] resize() {
 HashMap遍历有三种方式，一种是对key遍历，还有一种是对entry遍历和对value遍历。这三种遍历方式都是基于对HashIterator的封装，三种实现方式大同小异，因此我着重介绍EntryIterator的实现。  
 
 
-```
+```java
 // 对HashMap元素进行遍历。
 public Set<Map.Entry<K,V>> entrySet() {
     Set<Map.Entry<K,V>> es;
